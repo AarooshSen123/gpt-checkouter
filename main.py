@@ -9,7 +9,6 @@ import re
 from datetime import datetime, timedelta
 from fastapi import FastAPI, Request, Form, HTTPException
 from fastapi.responses import HTMLResponse, RedirectResponse
-from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 import tls_client
 import uvicorn
