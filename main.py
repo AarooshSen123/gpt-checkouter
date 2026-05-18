@@ -1538,12 +1538,13 @@ def generate_payment(req: PaymentRequest):
     except Exception as e:
         return {"success": False, "error": str(e)}
 
+import os
+
 if __name__ == "__main__":
-    # Create default admin key if no keys exist
-    if not os.path.exists(KEYS_FILE) or os.path.getsize(KEYS_FILE) == 0:
-        admin_key, expiry = create_key("30d")
-        print(f"\033[92m✓ Default admin key created: {admin_key} (expires: {expiry})\033[0m")
-    
+    port = int(os.environ.get("PORT", 8080))
+    print(f"\033[92m✅ Server running on port {port}\033[0m")
+    print(f"\033[94m🌐 Your app is live at: https://{os.environ.get('RAILWAY_PUBLIC_DOMAIN', 'localhost')}\033[0m")
+    uvicorn.run(app, host="0.0.0.0", port=port, log_level="info")
     print("\033[91m" + "="*60 + "\033[0m")
     print("\033[91m🔥 ALONE_AAROOSH GPT GEN PLUS - Premium Session Linker 🔥\033[0m")
     print("\033[91m" + "="*60 + "\033[0m")
